@@ -44,6 +44,7 @@ public class GenerateData {
         return sanPham;
     }
 
+
     public NhanVien generateNhanVien() throws Exception {
         NhanVien nhanVien = new NhanVien();
         nhanVien.setNhanVienID("NV" + String.format("%04d", ThreadLocalRandom.current().nextInt(1, 10000)));
@@ -205,6 +206,8 @@ public class GenerateData {
         hoaDonTra.setNhanVien(nhanVien);
         return hoaDonTra;
     }
+
+
 
     public ChiTietTraHang generateChiTietTraHang(int sanPhamID, String hoaDonID) throws Exception {
         System.out.println("DEBUG: hoaDonTraID = " + hoaDonID + ", sanPhamID = " + sanPhamID);
