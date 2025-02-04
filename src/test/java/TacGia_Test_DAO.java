@@ -39,8 +39,8 @@ public class TacGia_Test_DAO {
     @Test
     public void testThemTacGia() throws Exception {
         TacGia tacGiaMoi = new TacGia();
-        tacGiaMoi.setTacGiaID(123);
         tacGiaMoi.setTenTacGia("Nguyễn Văn A");
+        tacGiaMoi.setQuocTich("VietNam");
 
         try {
             boolean ketQua = tacGiaDAO.addTacGia(tacGiaMoi);
