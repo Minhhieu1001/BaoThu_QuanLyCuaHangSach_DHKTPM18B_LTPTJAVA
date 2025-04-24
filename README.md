@@ -1,4 +1,4 @@
-QUẢN LÝ CỬA HÀNG SÁCH ANPHABOOKS
+QUẢN LÝ CỬA HÀNG SÁCH ALPHABOOKS
 
     22693491 - Phạm Minh Hiếu
     22698401 - Bùi Tấn Phát
