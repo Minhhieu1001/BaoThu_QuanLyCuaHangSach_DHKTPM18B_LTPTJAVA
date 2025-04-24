@@ -10,7 +10,7 @@ import java.rmi.registry.LocateRegistry;
 
 public class Server {
 	private static final String HOST = "localhost";
-	private static final int PORT = 3307;
+	private static final int PORT = 3308;
 	public static void main(String[] args) {
 
 		try {
