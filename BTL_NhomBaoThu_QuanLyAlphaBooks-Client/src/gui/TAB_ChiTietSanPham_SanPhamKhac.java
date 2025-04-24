@@ -15,6 +15,10 @@ import java.awt.MediaTracker;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author ASUS
+ */
 public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
     SanPham x = new SanPham();
     /**
@@ -23,19 +27,19 @@ public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
     public TAB_ChiTietSanPham_SanPhamKhac() {
         initComponents();
     }
-    
+
     public TAB_ChiTietSanPham_SanPhamKhac(SanPham x) {
         this.x = x;
         initComponents();
         SanPham_BUS sanPham_BUS = new SanPham_BUS();
-        
+
         if (CurrentSession.checkQuyenTruyCap() != CurrentSession.EnumQuyenHan.NHAN_VIEN_QUAN_LY){
             jButton_NgungBan.setEnabled(false);
             jButton_Sua.setEnabled(false);
         }
-   
-   
-   
+
+
+
 
         this.jLabel_TenSanPham.setText(x.getTenSanPham());
         this.jLabel_TenSanPham.setToolTipText(x.getBarcode());
@@ -47,14 +51,14 @@ public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
         {
             this.jLabel_SoLuong.setForeground(Color.red);
         }
-        
+
         if(x.getTinhTrang().equals("NGUNG_KINH_DOANH"))
         {
-           jButton_NgungBan.setBackground(new Color(204,204,204));
-           jButton_NgungBan.setText("Bán lại");
+            jButton_NgungBan.setBackground(new Color(204,204,204));
+            jButton_NgungBan.setText("Bán lại");
         }
-        
-       
+
+
 
         ImageIcon imageIcon = new ImageIcon("src/" + x.getImgPath()); // load the image to a imageIcon
         if (imageIcon.getImageLoadStatus() != MediaTracker.COMPLETE && imageIcon.getImageLoadStatus() != MediaTracker.LOADING){
@@ -63,9 +67,9 @@ public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
         }
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(150, 150,  Image.SCALE_SMOOTH); // scale it the smooth way
-        imageIcon = new ImageIcon(newimg); 
+        imageIcon = new ImageIcon(newimg);
         this.jLabel_Img.setIcon(imageIcon);
-        
+
 
     }
 
@@ -243,11 +247,11 @@ public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
         TAB_ThemSanPhamKhac tAB_ThemSanPhamKhac = new TAB_ThemSanPhamKhac();
         tAB_ThemSanPhamKhac.setVisible(true);
         tAB_ThemSanPhamKhac.setLocationRelativeTo(null);
-        
+
         tAB_ThemSanPhamKhac.setSanPhamSach(x);
         tAB_ThemSanPhamKhac.disVisibleForSua();
-        
-        
+
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnNgungKDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNgungKDActionPerformed
@@ -261,12 +265,12 @@ public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
                 jButton_NgungBan.setBackground(new Color(204,204,204));
                 jButton_NgungBan.setText("Bán lại");
             }
-                
+
             x.setTinhTrang("NGUNG_KINH_DOANH");
             sanPham_BUS.editTrangThaiSanPham(x);
             return;
         }
-        
+
         if(jButton_NgungBan.getText().equals("Bán lại"))
         {
             if(result == 0)
@@ -274,11 +278,11 @@ public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
                 jButton_NgungBan.setBackground(new Color(219,79,78));
                 jButton_NgungBan.setText("Ngừng bán");
             }
-           
+
             x.setTinhTrang("CON_HANG");
             sanPham_BUS.editTrangThaiSanPham(x);
         }
-       
+
     }//GEN-LAST:event_btnNgungKDActionPerformed
 
 

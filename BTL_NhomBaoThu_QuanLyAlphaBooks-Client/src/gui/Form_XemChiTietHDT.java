@@ -56,11 +56,6 @@ public class Form_XemChiTietHDT extends JFrame {
 
         // Lấy danh sách ChiTietTraHang
         List<ChiTietTraHang> chiTietList = chiTietTraHang_BUS.getAllChiTietCuaMotHoaDon(maHoaDon);
-        System.out.println("Số lượng ChiTietTraHang lấy được: " + chiTietList.size());
-        for (ChiTietTraHang ctth : chiTietList) {
-            System.out.println("ChiTietTraHang: sanPhamID=" + ctth.getSanPham().getSanPhamID() +
-                    ", liDoTraHang=" + ctth.getLiDoTraHang());
-        }
 
         setResizable(false);
         initComponents();
@@ -80,7 +75,6 @@ public class Form_XemChiTietHDT extends JFrame {
             row[1] = ctth.getSanPham().getTenSanPham();
             row[2] = ctth.getSoLuong();
             row[3] = ctth.getLiDoTraHang() != null && !ctth.getLiDoTraHang().isEmpty() ? ctth.getLiDoTraHang() : "Không có lý do";
-            System.out.println("Hiển thị lý do trả: " + row[3]);
             tblModelTraHang.addRow(row);
         }
     }

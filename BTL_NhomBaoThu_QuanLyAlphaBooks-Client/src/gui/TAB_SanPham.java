@@ -45,6 +45,10 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ *
+ * @author duong
+ */
 public class TAB_SanPham extends JPanel {
     private SanPham_BUS sanPham_BUS;
 

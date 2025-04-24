@@ -52,6 +52,10 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ *
+ * @author ASUS
+ */
 public class TAB_ThemSanPham extends JFrame {
 
     /**
@@ -999,7 +1003,7 @@ public class TAB_ThemSanPham extends JFrame {
         jPanel37.setPreferredSize(new Dimension(0, 60));
         jPanel37.setLayout(new BorderLayout());
 
-        jLabel_NgayNhap.setText("Ngôn ngữ");
+        jLabel_NgayNhap.setText("Ngày nhập");
         jLabel_NgayNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel_NgayNhap.setFocusCycleRoot(true);
         jLabel_NgayNhap.setPreferredSize(new Dimension(74, 10));
@@ -1779,7 +1783,6 @@ public class TAB_ThemSanPham extends JFrame {
         String tenTheLoai = jTextField_TheLoai.getText().trim();
         String tenNhaXuatBan = jTextField_NhaXuatBan.getText().trim();
         String tenDanhMuc = jTextField_DanhMuc.getText().trim();
-        String tenThuongHieu = isEditMode ? currentSP.getThuongHieu().getTenThuongHieu() : jTextField_ThuongHieu.getText().trim();
 
         try {
             if (tenNhaCungCap.isEmpty()) {
@@ -1811,12 +1814,6 @@ public class TAB_ThemSanPham extends JFrame {
                 return null;
             }
             tg.setTenTacGia(tenTacGia);
-
-            if (tenThuongHieu.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Tên thương hiệu không được rỗng!");
-                return null;
-            }
-            th.setTenThuongHieu(tenThuongHieu);
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
             return null;
@@ -1900,18 +1897,28 @@ public class TAB_ThemSanPham extends JFrame {
         }
 
         // Thương hiệu
-        temp = sanPham_BUS.getIdThuongHieuByName(th.getTenThuongHieu());
-        if (temp == -1) {
-            int check = JOptionPane.showConfirmDialog(null, "Thương hiệu này chưa có sẵn. Tạo mới?");
-            if (check == 0) {
-                ThuongHieu_BUS thuongHieu_BUS = new ThuongHieu_BUS();
-                thuongHieu_BUS.addThuongHieu(th);
-                th.setThuongHieuID(sanPham_BUS.getIdThuongHieuByName(th.getTenThuongHieu()));
-            } else {
-                return null;
+        if (isEditMode) {
+            // Chế độ chỉnh sửa: Lấy thông tin thương hiệu từ sản phẩm hiện tại
+            th.setThuongHieuID(currentSP.getThuongHieu().getThuongHieuID());
+            try {
+                th.setTenThuongHieu(currentSP.getThuongHieu().getTenThuongHieu());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         } else {
-            th.setThuongHieuID(temp);
+            // Chế độ thêm mới: Gán mặc định thuongHieuID = 1
+            th.setThuongHieuID(1);
+            // Lấy tên thương hiệu từ cơ sở dữ liệu để đảm bảo tính nhất quán
+            String tenThuongHieu = sanPham_BUS.getNameThuongHieuByID(1);
+            if (tenThuongHieu == null || tenThuongHieu.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Thương hiệu với ID = 1 không tồn tại trong cơ sở dữ liệu!");
+                return null;
+            }
+            try {
+                th.setTenThuongHieu(tenThuongHieu);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
 
         // Tạo đối tượng SanPham
@@ -1953,6 +1960,10 @@ public class TAB_ThemSanPham extends JFrame {
             if (isEditMode) {
                 sanPham.setLoaiSanPham(currentSP.getLoaiSanPham());
                 sanPham.setSanPhamID(currentSP.getSanPhamID());
+            } else {
+                // Thiết lập giá trị mặc định cho sản phẩm mới
+                sanPham.setLoaiSanPham("SACH");
+                sanPham.setTinhTrang("CON_HANG");
             }
 
             // Gán các đối tượng liên quan

@@ -1,17 +1,36 @@
 package dao;
 
-import connectDB.ConnectDB;
-import entities.*;
-import interfaces.ISanPham;
-import jakarta.persistence.EntityManager;
-import ultilities.Numberic;
-
+import java.lang.reflect.Array;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+
+import connectDB.ConnectDB;
+import entities.DanhMuc;
+import entities.KhuyenMai;
+import entities.NhaCungCap;
+import entities.NhaXuatBan;
+import entities.SanPham;
+import entities.TacGia;
+import entities.TheLoai;
+import entities.ThuongHieu;
+import interfaces.ISanPham;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
+import ultilities.Numberic;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 	private final int LIMIT_RESULT = 100;
@@ -127,26 +146,27 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 	}
 
 	@Override
-	public SanPham getChiMotSanPhamTheoMaHoacBarcode(String x) throws RemoteException{
-
+	public SanPham getChiMotSanPhamTheoMaHoacBarcode(String x) throws RemoteException {
 		SanPham sanPham = null;
 		int id = 0;
 		try {
-
 			if (x.length() > 5) {
-				id = Numberic.parseInteger("-1");
+				id = -1; // Cân nhắc xác thực barcode thay vì đặt -1
 			} else {
 				id = Numberic.parseInteger(x);
 			}
 
-			sanPham = (SanPham) em.createNamedQuery("SanPham.findByIdAndBarcode").setParameter("id", id)
-					.setParameter("barcode", x).getSingleResult();
+			sanPham = (SanPham) em.createNamedQuery("SanPham.findByIdAndBarcode")
+					.setParameter("id", id)
+					.setParameter("barcode", x)
+					.getSingleResult();
 
 			return sanPham;
+		} catch (NoResultException e) {
+			return null; // Không tìm thấy sản phẩm
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
-			return null;
+			throw new RemoteException("Lỗi khi lấy SanPham: " + e.getMessage());
 		}
 	}
 
@@ -335,6 +355,7 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 
 	@Override
 	public List<SanPham> SapXepTangTheoGia(List<SanPham> list) throws RemoteException {
+		System.out.println("Gọi SapXepTangTheoGia");
 		List<SanPham> sortedList = new ArrayList<>(list);
 		Collections.sort(sortedList, new Comparator<SanPham>() {
 			@Override
@@ -347,6 +368,7 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 
 	@Override
 	public List<SanPham> SapXepGiamTheoGia(List<SanPham> list) throws RemoteException {
+		System.out.println("Gọi SapXepGiamTheoGia");
 		List<SanPham> sortedList = new ArrayList<>(list);
 		Collections.sort(sortedList, new Comparator<SanPham>() {
 			@Override
@@ -359,6 +381,7 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 
 	@Override
 	public List<SanPham> SapXepTangTheoSoLuong(List<SanPham> list) throws RemoteException {
+		System.out.println("Gọi SapXepTangTheoSoLuong");
 		List<SanPham> sortedList = new ArrayList<>(list);
 		Collections.sort(sortedList, new Comparator<SanPham>() {
 			@Override

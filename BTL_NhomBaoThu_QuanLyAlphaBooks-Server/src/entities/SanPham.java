@@ -10,23 +10,23 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "SanPham.findAll", query = "SELECT sp FROM SanPham sp"),
-	@NamedQuery(name = "SanPham.findById", query = "SELECT sp FROM SanPham sp WHERE sp.sanPhamID = :id"),
-	@NamedQuery(name = "SanPham.findByIdAndBarcode", query = "SELECT sp FROM SanPham sp WHERE sp.sanPhamID = :id OR sp.barcode = :barcode"),
-	@NamedQuery(name = "SanPham.findByTenSanPham", query = "SELECT sp FROM SanPham sp WHERE sp.tenSanPham = :tenSanPham"),
-	@NamedQuery(name = "SanPham.findByTacGia", query = "SELECT sp FROM SanPham sp WHERE sp.tacGia = :tacGia"),
-	@NamedQuery(name= "SanPham.updateInfo", query = "UPDATE SanPham sp SET sp.tenSanPham = :tenSanPham, sp.soLuongTon = :soLuongTon, sp.namSanXuat = :namSanXuat, sp.soTrang = :soTrang, sp.ngayNhap = :ngayNhap, sp.giaNhap = :giaNhap, sp.thue = :thue, sp.loaiDoiTra = :loaiDoiTra, sp.barcode = :barcode, sp.imgPath = :imgPath, sp.tinhTrang = :tinhTrang, sp.loaiSanPham = :loaiSanPham, sp.donViDoLuong = :donViDoLuong, sp.kichThuoc = :kichThuoc, sp.xuatXu = :xuatXu, sp.ngonNgu = :ngonNgu, sp.loaiBia = :loaiBia, sp.tacGia = :tacGia, sp.theLoai = :theLoai, sp.nhaXuatBan = :nhaXuatBan, sp.thuongHieu = :thuongHieu, sp.danhMuc = :danhMuc, sp.nhaCungCap = :nhaCungCap WHERE sp.sanPhamID = :sanPhamID"),
-	@NamedQuery(name = "SanPham.getSanPhamSapHet", query = "SELECT sp FROM SanPham sp WHERE sp.soLuongTon < 11"),
-	@NamedQuery(
-			name = "SanPham.findByThuongHieuID", 
-	            query = "SELECT sp FROM SanPham sp WHERE sp.thuongHieu.thuongHieuID = :thuongHieuID")
+		@NamedQuery(name = "SanPham.findAll", query = "SELECT sp FROM SanPham sp"),
+		@NamedQuery(name = "SanPham.findById", query = "SELECT sp FROM SanPham sp WHERE sp.sanPhamID = :id"),
+		@NamedQuery(name = "SanPham.findByIdAndBarcode", query = "SELECT sp FROM SanPham sp WHERE sp.sanPhamID = :id OR sp.barcode = :barcode"),
+		@NamedQuery(name = "SanPham.findByTenSanPham", query = "SELECT sp FROM SanPham sp WHERE sp.tenSanPham = :tenSanPham"),
+		@NamedQuery(name = "SanPham.findByTacGia", query = "SELECT sp FROM SanPham sp WHERE sp.tacGia = :tacGia"),
+		@NamedQuery(name= "SanPham.updateInfo", query = "UPDATE SanPham sp SET sp.tenSanPham = :tenSanPham, sp.soLuongTon = :soLuongTon, sp.namSanXuat = :namSanXuat, sp.soTrang = :soTrang, sp.ngayNhap = :ngayNhap, sp.giaNhap = :giaNhap, sp.thue = :thue, sp.loaiDoiTra = :loaiDoiTra, sp.barcode = :barcode, sp.imgPath = :imgPath, sp.tinhTrang = :tinhTrang, sp.loaiSanPham = :loaiSanPham, sp.donViDoLuong = :donViDoLuong, sp.kichThuoc = :kichThuoc, sp.xuatXu = :xuatXu, sp.ngonNgu = :ngonNgu, sp.loaiBia = :loaiBia, sp.tacGia = :tacGia, sp.theLoai = :theLoai, sp.nhaXuatBan = :nhaXuatBan, sp.thuongHieu = :thuongHieu, sp.danhMuc = :danhMuc, sp.nhaCungCap = :nhaCungCap WHERE sp.sanPhamID = :sanPhamID"),
+		@NamedQuery(name = "SanPham.getSanPhamSapHet", query = "SELECT sp FROM SanPham sp WHERE sp.soLuongTon < 11"),
+		@NamedQuery(
+				name = "SanPham.findByThuongHieuID",
+				query = "SELECT sp FROM SanPham sp WHERE sp.thuongHieu.thuongHieuID = :thuongHieuID")
 })
 @NamedNativeQueries({
 })
 public class SanPham implements Serializable{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -58,7 +58,7 @@ public class SanPham implements Serializable{
 	public void setChiTietHoaDons(List<ChiTietHoaDon> chiTietHoaDons) {
 		this.chiTietHoaDons = chiTietHoaDons;
 	}
-	
+
 	@Column(columnDefinition = "nvarchar(255)")
 	private String tenSanPham;
 	@Column(columnDefinition = "nvarchar(255)")
@@ -67,35 +67,35 @@ public class SanPham implements Serializable{
 	private String barcode;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String imgPath;
-	
+
 	@Column(columnDefinition = "nvarchar(255)")
-	private String tinhTrang; 
+	private String tinhTrang;
 	@Column(columnDefinition = "nvarchar(255)")
-	private String loaiSanPham; 
+	private String loaiSanPham;
 	@Column(columnDefinition = "nvarchar(255)")
-	private String donViDoLuong; 
+	private String donViDoLuong;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String kichThuoc;
-	
+
 	@Column(columnDefinition = "nvarchar(255)")
 	private String xuatXu;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String ngonNgu;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String loaiBia;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tacGiaID")
 	private TacGia tacGia;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "theLoaiID")
 	private TheLoai theLoai;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="nhaXuatBanID")
 	private NhaXuatBan nhaXuatBan;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="thuongHieuID")
 	private ThuongHieu thuongHieu;
@@ -107,18 +107,18 @@ public class SanPham implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="nhaCungCapID")
 	private NhaCungCap nhaCungCap;
-	
-	
+
+
 	@OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
 	private List<ChiTietKhuyenMai> chiTietKhuyenMais;
-	
+
 	@OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
 	private List<ChiTietTraHang> chiTietTraHangs;
-	
+
 	@OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
 	private List<ChiTietHoaDon> chiTietHoaDons;
-	
-	
+
+
 	// contructer cho khuyến mãi
 	public SanPham(int sanPhamID, String tenSanPham , int soLuongTon, String imgPath) {
 		this.sanPhamID = sanPhamID;
@@ -126,12 +126,12 @@ public class SanPham implements Serializable{
 		this.tenSanPham = tenSanPham;
 		this.imgPath = imgPath;
 	}
-	
+
 	public SanPham(int sanPhamID, String tenSanPham) {
 		this.sanPhamID = sanPhamID;
 		this.tenSanPham = tenSanPham;
 	}
-	
+
 	public SanPham(int sanPhamID) {
 		this.sanPhamID = sanPhamID;
 	}
@@ -164,7 +164,7 @@ public class SanPham implements Serializable{
 		return soTrang;
 	}
 	public void setSoTrang(int soTrang) throws Exception{
-		if (soTrang < 1) 
+		if (soTrang < 1)
 			throw new Exception("Số trang tối thiểu là 1");
 		this.soTrang = soTrang;
 	}
@@ -174,7 +174,7 @@ public class SanPham implements Serializable{
 	public void setNgayNhap(Date ngayNhap) {
 		this.ngayNhap = ngayNhap;
 	}
-	
+
 	public double getThue() {
 		return thue/100;
 	}
@@ -249,8 +249,8 @@ public class SanPham implements Serializable{
 	public void setLoaiBia(String loaiBia) {
 		this.loaiBia = loaiBia;
 	}
-	
-	
+
+
 
 	public double getGiaNhap() {
 		return giaNhap;
@@ -270,7 +270,7 @@ public class SanPham implements Serializable{
 	public void setTheLoai(TheLoai theLoai) {
 		this.theLoai = theLoai;
 	}
-	
+
 	public NhaXuatBan getNhaXuatBan() {
 		return nhaXuatBan;
 	}
@@ -295,8 +295,8 @@ public class SanPham implements Serializable{
 	public void setNhaCungCap(NhaCungCap nhaCungCap) {
 		this.nhaCungCap = nhaCungCap;
 	}
-	
-	
+
+
 	public String getLoaiDoiTra() {
 		return loaiDoiTra;
 	}
@@ -304,8 +304,8 @@ public class SanPham implements Serializable{
 		this.loaiDoiTra = loaiDoiTra;
 	}
 	public SanPham(int sanPhamID, int soLuongTon, int namSanXuat,int soTrang, Date ngayNhap, double giaNhap,
-			double thue, String tenSanPham, String loaiDoiTra, String barcode, String imgPath, String tinhTrang, String loaiSanPham,
-			String donViDoLuong, String kichThuoc, String xuatXu, String ngonNgu, String loaiBia) throws Exception{
+				   double thue, String tenSanPham, String loaiDoiTra, String barcode, String imgPath, String tinhTrang, String loaiSanPham,
+				   String donViDoLuong, String kichThuoc, String xuatXu, String ngonNgu, String loaiBia) throws Exception{
 		super();
 		setSanPhamID(sanPhamID);
 		setSoLuongTon(soLuongTon);
@@ -325,13 +325,13 @@ public class SanPham implements Serializable{
 		setXuatXu(xuatXu);
 		setNgonNgu(ngonNgu);
 		setLoaiBia(loaiBia);
-		
+
 	}
 
 	public SanPham(int sanPhamID, int soLuongTon, int namSanXuat, int soTrang, Date ngayNhap, double giaNhap,
-			double thue, String tenSanPham, String loaiDoiTra,String barcode, String imgPath, String tinhTrang, String loaiSanPham,
-			String donViDoLuong, String kichThuoc, String xuatXu, String ngonNgu, String loaiBia, TacGia tacGia,
-			TheLoai theLoai, NhaXuatBan nhaXuatBan, ThuongHieu thuongHieu, DanhMuc danhMuc, NhaCungCap nhaCungCap) throws Exception {
+				   double thue, String tenSanPham, String loaiDoiTra,String barcode, String imgPath, String tinhTrang, String loaiSanPham,
+				   String donViDoLuong, String kichThuoc, String xuatXu, String ngonNgu, String loaiBia, TacGia tacGia,
+				   TheLoai theLoai, NhaXuatBan nhaXuatBan, ThuongHieu thuongHieu, DanhMuc danhMuc, NhaCungCap nhaCungCap) throws Exception {
 		super();
 		setSanPhamID(sanPhamID);
 		setSoLuongTon(soLuongTon);
@@ -351,7 +351,7 @@ public class SanPham implements Serializable{
 		setXuatXu(xuatXu);
 		setNgonNgu(ngonNgu);
 		setLoaiBia(loaiBia);
-		
+
 		setTacGia(tacGia);
 		setTheLoai(theLoai);
 		setNhaXuatBan(nhaXuatBan);
@@ -359,8 +359,8 @@ public class SanPham implements Serializable{
 		setDanhMuc(danhMuc);
 		setNhaCungCap(nhaCungCap);
 	}
-        
-        
+
+
 	public SanPham() {
 		super();
 		long millis = System.currentTimeMillis();
@@ -382,18 +382,18 @@ public class SanPham implements Serializable{
 		this.soTrang = 1;
 	}
 
-	
+
 	/* Tính giá bán */
 	public double getGiaBan() {
 		// TODO Auto-generated method stub
 		return (giaNhap  + giaNhap * 0.2) + (giaNhap  + giaNhap * 0.2) * getThue();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(sanPhamID);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -409,5 +409,5 @@ public class SanPham implements Serializable{
 	public String toString() {
 		return tenSanPham;
 	}
-	
+
 }
