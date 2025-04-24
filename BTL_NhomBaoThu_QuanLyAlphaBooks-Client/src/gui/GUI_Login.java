@@ -45,13 +45,6 @@ import java.awt.event.ActionEvent;
 import java.util.Properties;
 import javax.swing.SwingConstants;
 
-/**
- *
- * @author: Dương Thái Bảo
- * @lastUpdate: 24/10/2023
- * @description: 1. Giao diện đăng nhập
- *
- */
 public class GUI_Login extends JFrame implements ActionListener {
 
 	private JTextField txtUsername;

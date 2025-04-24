@@ -15,10 +15,6 @@ import java.util.*;
 import ultilities.ErrorMessage;
 import ultilities.Numberic;
 
-/**
- *
- * @author duong
- */
 public class Form_ThongKeDoanhThu extends javax.swing.JPanel {
 
     private ThongKe_BUS thongKe_BUS;

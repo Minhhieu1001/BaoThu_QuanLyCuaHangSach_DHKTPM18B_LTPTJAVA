@@ -52,10 +52,6 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author ASUS
- */
 public class TAB_ThemSanPham extends JFrame {
 
     /**

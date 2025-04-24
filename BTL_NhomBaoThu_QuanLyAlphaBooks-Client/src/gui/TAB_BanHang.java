@@ -50,10 +50,7 @@ import static ultilities.TAB_HoaDon_EditorMode.BAN_HANG;
 import static ultilities.TAB_HoaDon_EditorMode.TRA_HANG;
 import static ultilities.TAB_HoaDon_EditorMode.XEM_CHI_TIET_HOA_DON;
 
-/**
- *
- * @author duong
- */
+
 public class TAB_BanHang extends JPanel implements MouseListener {
 
     private JTextField lastClicked;

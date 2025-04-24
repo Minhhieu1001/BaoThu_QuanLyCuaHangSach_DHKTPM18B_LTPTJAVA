@@ -38,10 +38,6 @@ import javax.swing.table.DefaultTableModel;
 
 import com.itextpdf.text.io.TempFileCache;
 
-/**
- *
- * @author duong
- */
 public class Form_TraHang extends JFrame {
 	private JFrame frameOriginal;
 	private DefaultTableModel tblModelTraHang;

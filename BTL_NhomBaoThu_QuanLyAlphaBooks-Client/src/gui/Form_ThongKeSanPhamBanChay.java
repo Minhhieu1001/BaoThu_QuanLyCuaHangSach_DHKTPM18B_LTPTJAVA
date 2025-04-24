@@ -21,10 +21,6 @@ import java.util.Map;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author duong
- */
 public class Form_ThongKeSanPhamBanChay extends javax.swing.JPanel {
 
     private DefaultTableModel modelThongKeXuHuong;

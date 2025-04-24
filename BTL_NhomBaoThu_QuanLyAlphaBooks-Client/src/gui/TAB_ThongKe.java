@@ -4,10 +4,6 @@
  */
 package gui;
 
-/**
- *
- * @author duong
- */
 public class TAB_ThongKe extends javax.swing.JPanel {
 
     /**

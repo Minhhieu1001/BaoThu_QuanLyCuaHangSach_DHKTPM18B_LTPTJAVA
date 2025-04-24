@@ -41,11 +41,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import bus.NhaCungCap_BUS;
 import entities.NhaCungCap;
 
-
-/**
- *
- * @author NguyenThanhLuan
- */
 public class TAB_NhaCungCap extends JPanel {
 	Component oldCom;
     private DefaultTableModel tableModel;

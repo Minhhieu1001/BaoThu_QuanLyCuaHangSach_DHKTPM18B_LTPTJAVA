@@ -46,10 +46,6 @@ import javax.swing.JOptionPane;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
-/**
- *
- * @author ASUS
- */
 public class TAB_ThemSanPhamKhac extends javax.swing.JFrame {
 
     /**

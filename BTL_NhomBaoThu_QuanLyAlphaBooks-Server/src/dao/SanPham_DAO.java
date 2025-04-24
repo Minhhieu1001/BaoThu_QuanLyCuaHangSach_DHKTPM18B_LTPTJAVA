@@ -335,7 +335,6 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 
 	@Override
 	public List<SanPham> SapXepTangTheoGia(List<SanPham> list) throws RemoteException {
-		System.out.println("Gọi SapXepTangTheoGia");
 		List<SanPham> sortedList = new ArrayList<>(list);
 		Collections.sort(sortedList, new Comparator<SanPham>() {
 			@Override
@@ -348,7 +347,6 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 
 	@Override
 	public List<SanPham> SapXepGiamTheoGia(List<SanPham> list) throws RemoteException {
-		System.out.println("Gọi SapXepGiamTheoGia");
 		List<SanPham> sortedList = new ArrayList<>(list);
 		Collections.sort(sortedList, new Comparator<SanPham>() {
 			@Override
@@ -361,7 +359,6 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 
 	@Override
 	public List<SanPham> SapXepTangTheoSoLuong(List<SanPham> list) throws RemoteException {
-		System.out.println("Gọi SapXepTangTheoSoLuong");
 		List<SanPham> sortedList = new ArrayList<>(list);
 		Collections.sort(sortedList, new Comparator<SanPham>() {
 			@Override

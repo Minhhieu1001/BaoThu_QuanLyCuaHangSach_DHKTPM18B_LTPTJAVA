@@ -9,10 +9,6 @@ import entities.NhanVien;
 import ultilities.CurrentSession;
 import ultilities.ErrorMessage;
 
-/**
- *
- * @author duong
- */
 public class Form_DoiMatKhau extends javax.swing.JFrame {
 
     /**

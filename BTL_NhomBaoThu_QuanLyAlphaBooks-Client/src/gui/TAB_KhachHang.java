@@ -54,10 +54,6 @@ import ultilities.ErrorMessage;
 import ultilities.ProcessingEnumDBForQuy;
 import ultilities.RegexPattern;
 
-/**
- *
- * @author s2quy
- */
 public class TAB_KhachHang extends javax.swing.JPanel {
 	KhachHang_BUS khachHangBus = new KhachHang_BUS();
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

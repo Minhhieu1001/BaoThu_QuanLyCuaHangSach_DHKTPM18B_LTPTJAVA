@@ -32,10 +32,6 @@ import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author duong
- */
 public class Form_XemChiTietHDT extends JFrame {
     private JFrame frameOriginal;
     private DefaultTableModel tblModelTraHang;

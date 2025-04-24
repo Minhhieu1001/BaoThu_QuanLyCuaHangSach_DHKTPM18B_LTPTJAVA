@@ -70,10 +70,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
-/**
- *
- * @author s2quy
- */
 public class TAB_NhanVien extends javax.swing.JPanel {
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

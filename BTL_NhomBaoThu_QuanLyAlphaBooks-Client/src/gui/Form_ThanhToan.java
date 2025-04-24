@@ -21,10 +21,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.border.Border;
 
-/**
- *
- * @author duong
- */
 public class Form_ThanhToan extends JFrame {
     private JFrame frameOriginal;
     private TAB_BanHang tabBanHang;

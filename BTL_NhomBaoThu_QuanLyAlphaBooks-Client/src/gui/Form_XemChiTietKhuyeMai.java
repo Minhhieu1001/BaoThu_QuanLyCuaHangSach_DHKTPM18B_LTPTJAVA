@@ -20,10 +20,6 @@ import ultilities.GetToDay;
 import java.awt.Color;
 import java.sql.Date;
 
-/**
- *
- * @author NguyenThanhLuan
- */
 public class Form_XemChiTietKhuyeMai extends JFrame {
 	private DefaultTableModel tableModel;
 	private List<ChiTietKhuyenMai> danhSachCT;

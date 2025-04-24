@@ -15,10 +15,6 @@ import java.awt.MediaTracker;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ASUS
- */
 public class TAB_ChiTietSanPham_SanPhamKhac extends javax.swing.JPanel {
     SanPham x = new SanPham();
     /**

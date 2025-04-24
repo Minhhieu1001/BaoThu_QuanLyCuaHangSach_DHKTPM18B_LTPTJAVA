@@ -17,10 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import bus.KhuyenMai_BUS;
 import entities.KhuyenMai;
 
-/**
- *
- * @author NguyenThanhLuan
- */
 public class Form_DanhSachVoucher extends JFrame {
 	private List<KhuyenMai> listVoucher;
 	private DefaultTableModel tableModelVoucher;

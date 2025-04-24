@@ -56,10 +56,6 @@ import ultilities.ErrorMessage;
 import ultilities.ImageProcessing;
 import ultilities.Numberic;
 
-/**
- *
- * @author NguyenThanhLuan
- */
 public class TAB_KhuyenMai extends javax.swing.JPanel {
 	private DefaultTableModel tableModel;
 	private DefaultTableModel tableModelSP;

@@ -12,10 +12,6 @@ import javax.swing.border.Border;
 
 import bus.NhaXuatBan_BUS;
 
-/**
- *
- * @author ASUS
- */
 public class TAB_ThemNhaXuatBan extends javax.swing.JFrame {
 
     /**

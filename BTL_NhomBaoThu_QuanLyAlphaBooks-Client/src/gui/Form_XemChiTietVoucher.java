@@ -11,10 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import bus.KhuyenMai_BUS;
 import entities.KhuyenMai;
 
-/**
- *
- * @author NguyenThanhLuan
- */
 public class Form_XemChiTietVoucher extends javax.swing.JFrame {
 	private DefaultTableModel tableModelVoucher;
 	private KhuyenMai_BUS khuyenMai_BUS;

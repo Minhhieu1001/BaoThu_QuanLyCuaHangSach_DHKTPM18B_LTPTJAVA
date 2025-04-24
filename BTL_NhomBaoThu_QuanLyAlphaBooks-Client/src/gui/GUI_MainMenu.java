@@ -30,10 +30,7 @@ import javax.swing.border.Border;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 
-/**
- *
- * @author duong
- */
+
 public class GUI_MainMenu extends JFrame {
 
     private int sizeIconBar = 30;

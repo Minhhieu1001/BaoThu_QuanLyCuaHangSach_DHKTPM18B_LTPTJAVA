@@ -13,10 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author duong
- */
 public class Frame_KeyPad extends JFrame {
     private JPanel currentPanel;
     private JTextField currentTextFocus;
