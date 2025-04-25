@@ -171,31 +171,17 @@ public class KhachHang_DAO extends UnicastRemoteObject implements IKhachHang {
 	}
 
 	public long phatSinhMaKhachHang() throws RemoteException {
-		EntityTransaction tx = em.getTransaction();
-		boolean isTransactionManagedHere = false;
 		try {
-			if (!tx.isActive()) {
-				tx.begin();
-				isTransactionManagedHere = true;
-			}
-			List<String> result = em.createQuery("SELECT MAX(kh.khachHangID) FROM KhachHang kh", String.class)
-					.getResultList();
-			String maxId = result.isEmpty() || result.get(0) == null ? null : result.get(0);
+			// Lấy khachHangID lớn nhất
+			String maxId = em.createQuery("SELECT MAX(kh.khachHangID) FROM KhachHang kh", String.class)
+					.getSingleResult();
 			if (maxId == null || !maxId.startsWith("KH")) {
-				if (isTransactionManagedHere) {
-					tx.commit();
-				}
-				return 1; // Bắt đầu từ 1 (KH0001)
+				return 1; // Nếu chưa có bản ghi nào, bắt đầu từ 1 (KH0001)
 			}
+			// Tách phần số từ mã (VD: KH0003 -> 3)
 			int num = Integer.parseInt(maxId.substring(2));
-			if (isTransactionManagedHere) {
-				tx.commit();
-			}
-			return num + 1; // Tăng lên 1 để được mã mới
+			return num + 1; // Tăng lên 1 để được mã mới (VD: 4 cho KH0004)
 		} catch (Exception e) {
-			if (isTransactionManagedHere && tx.isActive()) {
-				tx.rollback();
-			}
 			System.err.println("Error generating khachHangID: " + e.getMessage());
 			e.printStackTrace();
 			return 1; // Giá trị mặc định nếu có lỗi

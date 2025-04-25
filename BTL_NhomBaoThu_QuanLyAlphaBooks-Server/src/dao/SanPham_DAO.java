@@ -279,31 +279,15 @@ public class SanPham_DAO extends UnicastRemoteObject implements ISanPham {
 	}
 
 	@Override
-	public String getNameTacGiaByID(int ID) throws RemoteException {
-		EntityTransaction tx = em.getTransaction();
-		boolean isTransactionManagedHere = false;
+	public String getNameTacGiaByID(int ID) throws RemoteException{
 		try {
-			if (!tx.isActive()) {
-				tx.begin();
-				isTransactionManagedHere = true;
-			}
-			List<TacGia> result = em.createNamedQuery("TacGia.findByID")
-					.setParameter("id", ID)
-					.getResultList();
-			if (!result.isEmpty()) {
-				return result.get(0).getTenTacGia();
-			}
-			if (isTransactionManagedHere) {
-				tx.commit();
-			}
-			return "";
+			TacGia tg = (TacGia) em.createNamedQuery("TacGia.findByID").setParameter("id", ID).getSingleResult();
+			if (tg != null)
+				return tg.getTenTacGia();
 		} catch (Exception e) {
-			if (isTransactionManagedHere && tx.isActive()) {
-				tx.rollback();
-			}
 			e.printStackTrace();
-			return "";
 		}
+		return "";
 	}
 
 	@Override
