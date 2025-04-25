@@ -2071,7 +2071,7 @@ public class TAB_BanHang extends JPanel implements MouseListener {
                 tblModelCTHD.setValueAt(ct.tinhTongTien(), tempPos, 8);
             }
         } else {
-            // Kiểm tra tình trạng trước khi th
+            // Kiểm tra tình trạng trước khi thêm
             tempPos = hoaDon.getListChiTietHoaDon().indexOf(ct);
             if (tempPos >= 0) {
                 if (trangThaiEditor != TAB_HoaDon_EditorMode.TRA_HANG && x.getSoLuongTon() < hoaDon.getListChiTietHoaDon().get(tempPos).getSoLuong() + 1) {
